@@ -1,0 +1,15 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Tên công trình</th><th scope="col">Nhóm tác giả</th><th scope="col">Đơn vị chủ trì</th><th scope="col">Loại công trình</th><th scope="col">Ngày bắt đầu</th><th scope="col">Kết thúc</th><th scope="col">Kinh phí</th><th scope="col">Xếp loại</th><th scope="col">Giờ</th>
+		</tr><tr>
+			<td>Giải ph&#225;p ph&#225;t triển CLB Cờ vua ở c&#225;c trường tiểu học tr&#234;n địa b&#224;n quận Thanh Kh&#234;, th&#224;nh phố Đ&#224; Nẵng</td><td>Đồng Thị Hương (CN), Nguyễn Th&#225;i Trọng Bằng</td><td>Huấn luyện thể dục thể thao</td><td>Chủ tr&#236; hoặc tham gia c&#225;c đề t&#224;i, dự &#225;n nghi&#234;n cứu khoa học</td><td>20/07/2021</td><td>20/07/2022</td><td>8980000 VNĐ</td><td>Kh&#244;ng đạt</td><td>200, 200</td>
+		</tr><tr>
+			<td>Nghi&#234;n cứu cải tiến chương tr&#236;nh đ&#224;o tạo cử nh&#226;n ng&#224;nh Gi&#225;o dục thể chất tại Trường Đại học TDTT Đ&#224; Nẵng đ&#225;p ứng nhu cầu x&#227; hội</td><td>TS Nguyễn Mạnh Cường (CN), TS Đỗ Ngọc Quang, TS Phạm Tuấn H&#249;ng, ThS Ph&#249;ng Thị C&#250;c, ThS Nguyễn Thị B&#237;ch Thủy</td><td>Huấn luyện thể dục thể thao</td><td>Chủ tr&#236; hoặc tham gia c&#225;c đề t&#224;i, dự &#225;n nghi&#234;n cứu khoa học</td><td>15/12/2021</td><td>15/03/2023</td><td>43800000 VNĐ</td><td>Kh&#244;ng đạt</td><td>400, 200, 200, 200, 200</td>
+		</tr><tr>
+			<td>Nghi&#234;n cứu một số giải ph&#225;p n&#226;ng cao chất lượng học m&#244;n thể dục cho sinh vi&#234;n</td><td>Phan Thị Dịch (CN), Nguyễn Văn Quốc Dũng, Trần Thị To&#224;n</td><td>Huấn luyện thể dục thể thao</td><td>Bi&#234;n soạn chương tr&#236;nh đ&#224;o tạo</td><td>15/12/2021</td><td>15/09/2022</td><td>1000000 VNĐ</td><td>Kh&#225;</td><td>800, 500, 500</td>
+		</tr><tr>
+			<td>Nghi&#234;n cứu ảnh hưởng của việc l&#224;m th&#234;m đến sinh vi&#234;n Trường Đại học TDTT Đ&#224; Nẵng</td><td>B&#249;i Đăng Toản (CN), Nguyễn Ngọc Thắng, Nguyễn Viết H&#249;ng</td><td>Huấn luyện thể dục thể thao</td><td>Chủ tr&#236; hoặc tham gia c&#225;c đề t&#224;i, dự &#225;n nghi&#234;n cứu khoa học</td><td>16/07/2021</td><td>16/07/2022</td><td>11360000 VNĐ</td><td>Kh&#244;ng đạt</td><td>400, 200, 200</td>
+		</tr>
+	</table>
+</div>
