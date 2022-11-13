@@ -75,8 +75,9 @@
 
         </div>
         <div style="margin-top:20px">
-            @if (t.topicOfLecture.Status == 0)
+            @if (t.topicOfLecture.Status == 0 && Session["Acess"].ToString()=="1")
             {
+
                 <button style="width:100px; margin-left:200px" type="button" class="btn btn-success" onclick="XdBtnClicked('@t.topicOfLecture.IdTp')"> <span class="icon text-white-50"><i class="fas fa-check"> </i></span>  <span><b>Duyệt</b></span>    </button>
 
                 <button style="width:160px; margin-left:200px" type="button" class="btn btn-danger" onclick="rejectTopic('@t.topicOfLecture.IdTp')"> <span class="icon text-white-50"><i class="fas fa-times"> </i></span>  <span><b>Không duyệt</b></span>    </button>
