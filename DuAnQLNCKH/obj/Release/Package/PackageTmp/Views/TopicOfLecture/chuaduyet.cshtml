@@ -58,15 +58,15 @@
                     @{ stt++;}
                     <td width="120px">
 
-                        @foreach (var item in new TopicOfLectureModel().listAu(deTaiGV.topicOfLecture.IdTp))
+                        @foreach (var i in new TopicOfLectureModel().listAu(deTaiGV.topicOfLecture.IdTp))
                         {
-                            if (item.Grade == 0)
+                            if (i.Grade == 0)
                             {
-                                <b>@item.NameAu *</b> <br />
+                                <div>@i.NameAu (CN)</div>
                             }
                             else
                             {
-                                <br /> @item.NameAu
+                                <div> @i.NameAu</div>
                             }
                         }
 
@@ -86,8 +86,8 @@
                     <td>
                         @{
 
-                            var dateEnd = deTaiGV.topicOfLecture.DateSt.AddMonths(deTaiGV.topicOfLecture.Times).ToString("d");
-                            <p>@dateEnd</p>
+                            DateTime dateEnd = deTaiGV.topicOfLecture.DateSt.AddMonths(deTaiGV.topicOfLecture.Times);
+                            <p>@dateEnd.ToString("d")</p>
                         }
                     </td>
                     <td id="@tdExpense">

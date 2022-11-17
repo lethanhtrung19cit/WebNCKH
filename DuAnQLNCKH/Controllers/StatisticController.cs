@@ -25,7 +25,7 @@ namespace DuAnQLNCKH.Controllers
         List<Information> information = new DHTDTTDNEntities1().Information.ToList();
         List<TopicOfStudent> topicOfStudents = new DHTDTTDNEntities1().TopicOfStudents.ToList();
         List<ProgressLe> progressLes = new DHTDTTDNEntities1().ProgressLes.ToList();
-         //[Authorize(Roles = "1")]
+        [Authorize(Roles = "1")]
         public ActionResult Index()
         {
            
@@ -46,23 +46,12 @@ namespace DuAnQLNCKH.Controllers
             List<TopicOfStudent> DetailList = dHTDTTDNEntities1.TopicOfStudents.Where(x => x.IdSu == IdSu).ToList();
             return Json(DetailList, JsonRequestBehavior.AllowGet);
         }
-        //public ActionResult getLectureList(string IdFa)
-        //{
-            
-        //    dHTDTTDNEntities1.Configuration.ProxyCreationEnabled = false;
-        //    if (IdFa=="")
-        //    {
-        //        List<Information> DetailList1 = dHTDTTDNEntities1.Information.ToList();
-        //        return Json(DetailList1, JsonRequestBehavior.AllowGet);
-        //    }
-        //    List<Information> DetailList = dHTDTTDNEntities1.Information.Where(x => x.IdKhoa == IdFa).ToList();
-        //    return Json(DetailList, JsonRequestBehavior.AllowGet);
-        //}
-         
+        [Authorize(Roles = "1")]
         public void ExportExcel1(List<TopicLectureStatisticModel> list)
         {
             Session["listEx1"] = list;
         }
+        [Authorize(Roles = "1")]
         public void ExportExcel2(List<TopicStudenStatisticModel> list1)
         {
             Session["listEx2"] = list1;
@@ -110,6 +99,7 @@ namespace DuAnQLNCKH.Controllers
             List<PointTable> DetailList = dHTDTTDNEntities1.PointTables.Where(x => x.IdP == IdTy).ToList();
             return Json(DetailList, JsonRequestBehavior.AllowGet);
         }
+        [Authorize(Roles = "1")]
         public ActionResult SearchLecture(string name)
         {
             List<TopicOfLecture> listTopicOfLecture = dHTDTTDNEntities1.TopicOfLectures.Where(x=>x.Name.Contains(name)).ToList();
@@ -118,15 +108,10 @@ namespace DuAnQLNCKH.Controllers
             ViewBag.listTopicOfLecture = listTopicOfLecture;
             return View("Index");
         }
-     
-        //private SqlConnection con;
+      
         public string IdP1;
-        //public void connection()
-        //{
-        //    string constr = @"Data Source=DESKTOP-ECMGDNK\SQLEXPRESS;initial catalog=nckh_dhdn;integrated security=True";
-        //    con = new SqlConnection(constr);
-
-        //}
+     
+        [Authorize(Roles = "1")]
         [HttpPost]
         public ActionResult ExportExcel()
         {
@@ -170,6 +155,7 @@ namespace DuAnQLNCKH.Controllers
             viewbag();
             return View("Index");
         }
+        [Authorize(Roles = "1")]
         [HttpPost]
         public ActionResult ExportExcelStu()
         {
@@ -198,17 +184,7 @@ namespace DuAnQLNCKH.Controllers
             Response.End();
             viewbag();
             return View("Index");
-        }
-
-        //[HttpPost]
-        
-        //public JsonResult ExportToExcel(string IdPa, DateTime dateEnd, DateTime dateSt)
-        //{
-        //    ViewBag.IdP = IdPa;
-        //    IdP1 = IdPa;
-        //    viewbag();
-        //    return Json("Index");
-        //}
+        } 
         public string idp()
         {
 

@@ -34,7 +34,7 @@ namespace DuAnQLNCKH.Controllers
             List<PointTable> DetailList = qLNCKHDHTDTD.PointTables.Where(x => x.IdP == IdTy).ToList();
             return Json(DetailList, JsonRequestBehavior.AllowGet);
         }
-          
+        [Authorize(Roles = "2")]
         [HttpPost]
         public ActionResult editInfo(Information model)
         {
@@ -53,6 +53,7 @@ namespace DuAnQLNCKH.Controllers
           
 
         }
+        [Authorize(Roles = "2")]
         public ActionResult Index()
         {                
                 var topicofLecture = (from t in topicOfLectures
@@ -84,6 +85,7 @@ namespace DuAnQLNCKH.Controllers
             return View();
 
         }
+        [Authorize(Roles = "1")]
         public ActionResult listAcceptanced()
         {                
             var topicofLecture = (from t in topicOfLectures
@@ -112,7 +114,7 @@ namespace DuAnQLNCKH.Controllers
                          join ty in types on t.IdType equals ty.IdType
                           join a in authors on t.IdTp equals a.IdTp
                          join i in information on a.Email equals i.Email
-                          where i.Email == Session["UserName"].ToString() && (t.Status == 1 || t.Status == 3) 
+                          where i.Email == Session["UserName"].ToString() && (t.Status == 0 || t.Status == 3) 
                          select new TopicOfLectureView
                          {                              
                              topicOfLecture = t,
@@ -123,7 +125,7 @@ namespace DuAnQLNCKH.Controllers
                          join ty in types on t.IdType equals ty.IdType
                          join a in authors on t.IdTp equals a.IdTp
                          join i in information on a.Email equals i.Email
-                         where i.Email == Session["UserName"].ToString() && t.Status == 0
+                         where i.Email == Session["UserName"].ToString() && t.Status == 1
                          select new TopicOfLectureView
                          {                              
                              topicOfLecture = t,
@@ -142,6 +144,7 @@ namespace DuAnQLNCKH.Controllers
                           }).ToList();
             ViewBag.topicEnd = topic1;
         }
+        [Authorize(Roles = "2")]
         public ActionResult myTopicLecture()
         {
             dataMyTopic();
@@ -155,6 +158,7 @@ namespace DuAnQLNCKH.Controllers
             
         }
         [HttpPost]
+        [Authorize(Roles = "2")]
         public ActionResult CreateTopicOfLecture(HttpPostedFileBase FileDemo1, TopicOfLecture topicOfLecture, List<string> email, List<string> nameAu, List<int> Hours, byte typeRegister, int IdType=0, int HourAdmin=0, string NameAdmin=null, string EmailAdmin=null, int HourAu=0)
         {
             string IdTp = dtgv.IdTp();
@@ -197,6 +201,12 @@ namespace DuAnQLNCKH.Controllers
                 }
                 else
                 {
+                    if (email == null)
+                    {
+                        email = new List<string>();
+                        nameAu = new List<string>();
+                        Hours = new List<int>();
+                    }
                     var emailA = Session["UserName"].ToString();
                     email.Add(emailA);
                     string name = qLNCKHDHTDTD.Information.Where(x => x.Email == emailA).Select(x => x.NameLe).FirstOrDefault().ToString();
@@ -254,7 +264,7 @@ namespace DuAnQLNCKH.Controllers
             return View("ViewCreateTopicOfLecture", topicOfLecture);
            
         }
-           
+        [Authorize(Roles = "2")]
         public ActionResult ViewCreateTopicOfLecture()
         {            
             string email = Session["UserName"].ToString();
@@ -318,7 +328,7 @@ namespace DuAnQLNCKH.Controllers
             List<ChildDetail> ChildList = qLNCKHDHTDTD.ChildDetails.Where(x => x.IdDetail == IdDetail).ToList();
             return Json(ChildList, JsonRequestBehavior.AllowGet);
         }
-        //[Authorize(Roles = "1")]
+        [Authorize(Roles = "1")]
         public ActionResult chuaduyet()
         {             
             var topicofLecture = (from t in topicOfLectures
@@ -332,7 +342,8 @@ namespace DuAnQLNCKH.Controllers
             ViewBag.TopicOfLecture = topicofLecture;                                        
             return View();
          
-        }         
+        }
+        [Authorize(Roles = "2")]
         public ActionResult detailTopicLecture(string IdTp)
         {
             var listDetail = (from t in topicOfLectures
@@ -353,13 +364,15 @@ namespace DuAnQLNCKH.Controllers
             ViewBag.listDetail = listDetail;
             return View();
         }
+        [Authorize(Roles = "1")]
         public void rejectTopic(string IdTp)
         {             
             var topic = qLNCKHDHTDTD.TopicOfLectures.Find(IdTp);
             topic.Status = 2;            
             qLNCKHDHTDTD.Entry(topic).State = EntityState.Modified;
             qLNCKHDHTDTD.SaveChanges();                           
-        }
+        }//
+        [Authorize(Roles = "1")]
         public ActionResult detailTopicSt(string IdTp)
         {
             var listDetail = (from t in topicOfStudents
@@ -374,7 +387,8 @@ namespace DuAnQLNCKH.Controllers
             ViewBag.listDetail = listDetail;
             return View();
         }         
-        [HttpPost]       
+        [HttpPost]
+        [Authorize(Roles = "1")]
         public void xetduyet2(string IdTp)
         {            
             string a = IdTp;                
@@ -382,8 +396,8 @@ namespace DuAnQLNCKH.Controllers
             t.Status = 1;
             qLNCKHDHTDTD.Entry(t).State = EntityState.Modified;                
             qLNCKHDHTDTD.SaveChanges();      
-        }               
-       
+        }
+        [Authorize(Roles = "2")]
         public ActionResult Register1(string IdTp, int HourAdmin, int[] Hours, int[] IdAu, HttpPostedFileBase FileDemo1)
         {                                      
             var topic = qLNCKHDHTDTD.TopicOfLectures.Find(IdTp);
@@ -433,7 +447,7 @@ namespace DuAnQLNCKH.Controllers
                 throw new System.IO.IOException(s);
             return data;
         }
-
+        [Authorize(Roles = "2")]
         public ActionResult DeleteTopicLecture(string IdTp)
         {
             TopicOfLecture topic = (from c in qLNCKHDHTDTD.TopicOfLectures

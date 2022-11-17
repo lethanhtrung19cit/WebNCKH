@@ -13,8 +13,9 @@ namespace DuAnQLNCKH.Controllers
         DHTDTTDNEntities1 dHTDTTDNEntities1 = new DHTDTTDNEntities1();
         List<Faculty> faculties = new DHTDTTDNEntities1().Faculties.ToList();
         List<Information> informations = new DHTDTTDNEntities1().Information.ToList();
-         List<Author> authors = new DHTDTTDNEntities1().Authors.ToList();
+        List<Author> authors = new DHTDTTDNEntities1().Authors.ToList();
         List<Position> positions = new DHTDTTDNEntities1().Positions.ToList();
+        [Authorize(Roles = "2")]
         public ActionResult Index()
         {
             string s = Session["UserName"].ToString();      
@@ -34,6 +35,7 @@ namespace DuAnQLNCKH.Controllers
             
 
         }
+        [Authorize(Roles = "2")]
         [HttpPost]
         public ActionResult editInfo(Information model)
         {
@@ -64,6 +66,7 @@ namespace DuAnQLNCKH.Controllers
             }
 
         }
+        [Authorize(Roles = "2")]
         [HttpPost]
         public ActionResult changePassWord1(string OldPassword, string NewPassword, string ConfirmPassword)
         {
@@ -89,6 +92,7 @@ namespace DuAnQLNCKH.Controllers
             }
             return View("changePassWord");
         }
+        [Authorize(Roles = "2")]
         public ActionResult changePassWord()
         {
 

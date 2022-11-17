@@ -26,7 +26,7 @@
     using (Html.BeginForm("ExcelData", "UpdatePoint", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="info2">
-            <a href="@Url.Action("DownloadFile","Notification",new { filePath = "/UpLoadFile/Upload file công bố kết quả.xlsx"})">
+            <a href="@Url.Action("DownloadFile","Notification",new { filePath = "/UpLoadFile/File mau công bố kết quả.xlsx"})">
                 <h5>Nhập điểm công trình nghiên cứu khoa học bằng Upload file Excel</h5>
             </a> 
             @Html.AntiForgeryToken()
@@ -85,9 +85,7 @@
                 <tr id="@stt.ToString()">
                     <td>
                         @stt.ToString()
-                        @{
-                            stt++;
-                        }
+                         
                     </td>
                     <td style="width:150px">
                         @t.Name
@@ -183,6 +181,7 @@
                         </div><!-- /.modal -->
                     </td>
                 </tr>
+                stt++;
             }
 
         </table>
@@ -250,18 +249,19 @@
         });
     }
     function cancel(IdTp, stt) {
+        console.log(stt);
         $('#' + stt).remove();
-        $.ajax({
-            type: "POST",
-            url: "/UpdatePoint/DisApprove/",
-            data: { IdTP: IdTp },
+        //$.ajax({
+        //    type: "POST",
+        //    url: "/UpdatePoint/DisApprove/",
+        //    data: { IdTP: IdTp },
 
-            dataType: "json",
-            success: function () {
+        //    dataType: "json",
+        //    success: function () {
 
-            }
+        //    }
 
-        });
+        //});
     }
     function deleteType(IdTy) {
 

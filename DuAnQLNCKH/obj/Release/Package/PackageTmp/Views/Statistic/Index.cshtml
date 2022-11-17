@@ -77,8 +77,8 @@
                     @if (ViewBag.listNameLe != null)
                     {
 
-                        @Html.DropDownList("IdLe", ViewBag.listNameLe as SelectList, "--Tất cả giảng viên--", new { @class = "form-control", @style = "background:#white; height:100px; color:black; border:solid 1px black" })
-
+                        @Html.DropDownList("IdLe", ViewBag.listNameLe as SelectList, "--Tất cả giảng viên--", new { @class = "selectpicker my-select colleague-items", @style = "background:#white; height:100px; color:black; border:solid 1px black" })
+                        
                     }
                 </div>
             </div>

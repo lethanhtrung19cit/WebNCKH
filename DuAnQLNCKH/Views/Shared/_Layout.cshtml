@@ -20,6 +20,7 @@
 
     <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
 
 
     <script src="~/assets/client/js/jquery-1.11.3.min.js"></script>
@@ -60,6 +61,13 @@
                 @{
                     string session = Session["UserName"] as string;
                     string acess = Session["Acess"] as string;
+                    if (session==null)
+					{
+						Session["UserName"] = "";
+						Session["Acess"] = "";
+						session = Session["UserName"] as string;
+						acess = Session["Acess"] as string;
+					}
 
                 }
                 @if (acess.Equals("1") || acess.Equals("2"))

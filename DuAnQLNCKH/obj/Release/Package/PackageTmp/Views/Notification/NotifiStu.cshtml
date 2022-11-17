@@ -7,7 +7,7 @@
 
 }
 @*<link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />*@
-
+ 
 <div style="margin-top: 20px; color: #1d68c5" class="page-title">
 
     <img src="~/images/speaker.png" width="50px" height="50px" />
@@ -28,8 +28,8 @@
     }
 </div>
 
-<div id="showmodal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+<div id="showModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="max-width:800px">
         <div class="modal-content">
             <div class="modal-header">
 
@@ -83,18 +83,20 @@
 </div><!-- /.modal -->
 @if (Session["Acess"].ToString().Equals("1"))
 {
-    <button style="background: #2cc6dc;" id='addtype' class="btn btn-primary" data-toggle="modal" data-target="#showmodal">
+    <button style="background: #2cc6dc;" id='addtype' class="btn btn-primary btnAddNotificationStu">
         <i class="fa fa-plus">Thêm mới</i>
     </button>
 }
 
- 
+
 @if (Session["Acess"].ToString().Equals("1"))
 {
     //<button style="margin: 20px 0 20px 20px; background: #f7bf30;" id='email' class="btn btn-primary" data-toggle="modal" data-target="#showmodal1"><i class="fa fa-envelope"> <span style="margin-left:5px">Gửi email thông báo</span></i> </button>
 }
 <script type="text/javascript">
-
+    $('.btnAddNotificationStu').on('click', function () {
+        $('#showModal').modal('show');
+    })
     $(function () {
         $("#IdLeEm1").chosen({
             width: "560px"

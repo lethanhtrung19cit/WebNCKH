@@ -17,6 +17,8 @@
 </div>
 <hr />
 
+
+
  @foreach (var item in listType)
 {
     <h2> @item.NameType</h2>
@@ -24,7 +26,7 @@
     using (Html.BeginForm("ExcelData", "UpdatePoint", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="info2">
-            <a href="@Url.Action("DownloadFile","Notification",new { filePath = "/UpLoadFile/Upload file công bố kết quả.xlsx"})">
+            <a href="@Url.Action("DownloadFile","Notification",new { filePath = "/UpLoadFile/File mau công bố kết quả.xlsx"})">
                 <h5>Nhập điểm công trình nghiên cứu khoa học bằng Upload file Excel</h5>
             </a> 
             @Html.AntiForgeryToken()

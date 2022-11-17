@@ -15,11 +15,26 @@ namespace DuAnQLNCKH.Controllers
         // GET: Login
         public ActionResult RequestLogin()
         {
-            
-            return View();
+            //String[] roles = Roles.GetRolesForUser();
+            //if (roles.Contains("0"))
+            //{
+            //    return RedirectToAction("Index", "Admin");
+            //}
+            //else if (roles.Contains("1"))
+            //{
+            //    return RedirectToAction("chuaduyet", "TopicOfLecture");
+            //}
+            //else if (roles.Contains("2"))
+            //{
+            //    return RedirectToAction("myTopicLecture", "TopicOfLecture");
+            //}
+            //else
+            //{
+                return RedirectToAction("Index");
+            //}
         }
         [HttpGet]
-        public ActionResult Index(string id)
+        public ActionResult Index(string id="2")
         {
             Session.Clear();
             Session.RemoveAll();

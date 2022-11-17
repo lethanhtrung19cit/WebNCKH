@@ -46,12 +46,12 @@
         bs_input_file();
     });
 </script>
-@if (Session["Acess"].ToString() != "null")
+@if (Session["Acess"] == null || Session["Acess"].ToString() != "null")
 {
     using (Html.BeginForm("ExcelData", "TopicOfStudent", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
 <div class="info2">
-    <a href="@Url.Action("DownloadFile","Notification",new { filePath = "/UpLoadFile/File Mau Nhap Cong trinh sinh vien.xlsx"})">
+    <a href="@Url.Action("DownloadFile","Notification",new { filePath = "/UpLoadFile/File Mau Nhap Cong trinh sinh vien"})">
         <h4>Nhập thông tin đề tài sinh viên khóa luận tốt nghiệp bằng Upload file Excel</h4>
         </a>
         @Html.AntiForgeryToken()

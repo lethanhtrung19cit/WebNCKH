@@ -38,11 +38,30 @@ namespace DuAnQLNCKH.MyProvider
 
         public override string[] GetRolesForUser(string username)
         {
+            
             DHTDTTDNEntities1 conn = new DHTDTTDNEntities1();
-            string data = conn.Accounts.Where(x => x.Email == username && x.Access==0).FirstOrDefault().Access.ToString().TrimEnd();
+            string[] data = conn.Accounts.Where(x => x.Email == username).Select(x => x.Access.ToString()).ToArray();
             int lengt = data.Length;
-            string[] res = { data };
-            return res;
+            if (lengt > 0)
+            {
+                var link = HttpContext.Current.Request.Url.ToString();
+                if (link.Contains("Admin"))
+                {
+                    HttpContext.Current.Session["Acess"] = "0";
+                }
+                else if (link.Contains("myTopicLecture") 
+                    || link.Contains("CreateTopicOfLecture") 
+                    || link.Contains("ViewCreateTopicOfLecture"))
+                {
+                    HttpContext.Current.Session["Acess"] = "2";
+                }
+                else
+                {
+                    HttpContext.Current.Session["Acess"] = "1";
+                }
+                return data;
+            }
+            return null;
         }
 
         public override string[] GetUsersInRole(string roleName)

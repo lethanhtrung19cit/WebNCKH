@@ -75,14 +75,13 @@
 
         </div>
         <div style="margin-top:20px">
-            @if (t.topicOfLecture.Status == 0)
+            @if (t.topicOfLecture.Status == 0 && Session["Acess"].ToString()=="1")
             {
-                <button style="width:100px; margin-left:200px" type="button" class="btn btn-success" onclick="XdBtnClicked('@t.topicOfLecture.IdTp')"> <span class="icon text-white-50"><i class="fas fa-check"> </i></span>  <span><b>Duyệt</b></span>    </button>
 
-                <button style="width:160px; margin-left:200px" type="button" class="btn btn-danger" onclick="rejectTopic('@t.topicOfLecture.IdTp')"> <span class="icon text-white-50"><i class="fas fa-times"> </i></span>  <span><b>Không duyệt</b></span>    </button>
-            }
-
-
+                <button id="btnApprove" style="width:100px; margin-left:200px" type="button" class="btn btn-success" onclick="XdBtnClicked('@t.topicOfLecture.IdTp')"> <span class="icon text-white-50"><i class="fas fa-check"> </i></span>  <span><b>Duyệt</b></span>    </button>
+               
+                <button id="btnReject" style="width:160px; margin-left:200px" type="button" class="btn btn-danger" onclick="rejectTopic('@t.topicOfLecture.IdTp')"> <span class="icon text-white-50"><i class="fas fa-times"> </i></span>  <span><b>Không duyệt</b></span>    </button>
+            }            
         </div>
         <div id="approved" style="display:none; margin-left:150px">
             <h4 style="color:aquamarine">  Đã duyệt đề tài</h4>
@@ -101,6 +100,8 @@
     function XdBtnClicked(IdTp) {
 
         $('#approved').show();
+        $('#btnApprove').hide();
+        $('#btnReject').hide();
         $.ajax({
             type: "POST",
             url: "/TopicOfLecture/xetduyet2/",
@@ -116,6 +117,8 @@
     };
     function rejectTopic(IdTp) {
         $('#Noapproved').show();
+        $('#btnApprove').hide();
+        $('#btnReject').hide();
         $.ajax({
             type: "POST",
             url: "/TopicOfLecture/rejectTopic/",

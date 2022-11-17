@@ -56,9 +56,13 @@ namespace DuAnQLNCKH.Controllers
             ViewBag.listEmail = qLNCKHDHTDTD.Information.ToList();
              
         }
+         
         public ActionResult Index()
         {
-            
+            if (Session["Acess"]==null || Session["Acess"].ToString()=="null")                
+            {
+                return RedirectToAction("Index", "Login");
+            }
             selectedEmail ema = new selectedEmail();
 
            
@@ -103,6 +107,7 @@ namespace DuAnQLNCKH.Controllers
             }, "Value", "Text");
             return View();
         }
+        [Authorize(Roles = "1")]
         [HttpPost]
         public ActionResult CreateNotifi(HttpPostedFileBase files, Notification model, string Object)
         {
@@ -279,10 +284,12 @@ namespace DuAnQLNCKH.Controllers
                 throw new System.IO.IOException(s);
             return data;
         }
-
-        public ActionResult DetailNotification(string IdNo)
+         public ActionResult DetailNotification(string IdNo)
         {
-
+            if (Session["Acess"] == null || Session["Acess"].ToString() == "null")
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var model = notify.detailNotification(IdNo);
             return View(model);
 

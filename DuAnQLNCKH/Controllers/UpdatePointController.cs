@@ -14,11 +14,9 @@ namespace DuAnQLNCKH.Controllers
     {
         // GET: UpdatePoint
         DHTDTTDNEntities1 qLNCKHDHTDTD = new DHTDTTDNEntities1();
-       // [Authorize(Roles = "1")]
-
+        [Authorize(Roles = "1")]
         public ActionResult Index()
-        {
-                        
+        {                        
             ViewBag.listGrade = new List<SelectListItem>{
                        new SelectListItem { Value = "0" , Text = "Không đạt" },
                        new SelectListItem { Value = "1" , Text = "Đạt" },
@@ -28,8 +26,7 @@ namespace DuAnQLNCKH.Controllers
             ViewBag.listType = qLNCKHDHTDTD.Types.ToList();
             return View();
         }
-
-        //Import data from Excel
+        [Authorize(Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ExcelData(HttpPostedFileBase upload, int IdType)
@@ -198,6 +195,7 @@ namespace DuAnQLNCKH.Controllers
             qLNCKHDHTDTD.SaveChanges();
             return Redirect("TypeTopic");
         }
+        [Authorize(Roles = "1")]
         public ActionResult Approve(string IdTp, byte Grade)
         {
 
@@ -214,12 +212,14 @@ namespace DuAnQLNCKH.Controllers
             qLNCKHDHTDTD.SaveChanges();
             return Redirect("Index");
         }
+        [Authorize(Roles = "1")]
         public void DisApprove(string IdTp)
         {
             var result = qLNCKHDHTDTD.TopicOfLectures.SingleOrDefault(x => x.IdTp == IdTp);
             result.Status = 2;
             qLNCKHDHTDTD.SaveChanges();
         }
+        [Authorize(Roles = "1")]
         public void updateHour(int IdP, int Hours)
         {            
             var p = qLNCKHDHTDTD.PointTables.Find(IdP);
@@ -279,42 +279,9 @@ namespace DuAnQLNCKH.Controllers
         }
         public ActionResult getLevel(int IdType)
         {
-
-            qLNCKHDHTDTD.Configuration.ProxyCreationEnabled = false;
-            
+            qLNCKHDHTDTD.Configuration.ProxyCreationEnabled = false;            
             int Level = int.Parse(qLNCKHDHTDTD.Types.Where(x => x.IdType == IdType).Select(x => x.Level).FirstOrDefault().ToString());
-            return Json(Level, JsonRequestBehavior.AllowGet);
-             
-  
-        }
-       
-        //public ActionResult Update(PointTable point)
-        //{
-        //    var detail = qLNCKHDHTDTD.PointTables.Find(point.IdP);
-        //    detail.NameP = point.NameP;
-        //    detail.MaxTime = point.MaxTime;
-        //    detail.Value = point.Value;
-        //    qLNCKHDHTDTD.Entry(detail).State=System.Data.Entity.EntityState.Modified;
-        //    qLNCKHDHTDTD.SaveChanges();
-        //     viewbag();
-        //    return View("Index"); 
-        //}
-         
-         
-        //[HttpPost]
-        //public ActionResult CreatePoint(string NameP, int MaxTime, float Value)
-        //{
-        //    PointTable point = new PointTable();
-        //    point.NameP = NameP;
-        //    point.MaxTime = MaxTime;
-        //    point.Value = Value;
-        //    qLNCKHDHTDTD.PointTables.Add(point);            
-        //    qLNCKHDHTDTD.SaveChanges();
-        //    viewbag();
-
-        //    return RedirectToAction("Index", "UpdatePoint");
-
-
-        //}
+            return Json(Level, JsonRequestBehavior.AllowGet);               
+        }        
     }
 }

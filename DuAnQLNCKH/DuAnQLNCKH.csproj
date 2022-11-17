@@ -1886,8 +1886,9 @@
     <Content Include="Content\chosen.min.css" />
     <Content Include="Content\css\editInfo.css" />
     <Content Include="Content\css\sb-admin-21.css" />
-    <Content Include="Content\css\sb-admin.css" />
+    <Content Include="Content\css\sb-admin1.css" />
     <Content Include="Content\css\sb-admin.min.css" />
+    <Content Include="Content\css\StyleSheet1.css" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\NewFolder1\all.min.css" />
     <Content Include="Content\NewFolder1\sb-admin-2.min.css" />
@@ -6298,11 +6299,9 @@
     <Content Include="Views\TopicOfLecture\detailTopicSt.cshtml" />
     <Content Include="Views\UpdateActivity\detailAcceptance.cshtml" />
     <Content Include="Views\TopicOfLecture\listAcceptanced.cshtml" />
-    <Content Include="Views\TopicOfLecture\topicRejected.cshtml" />
     <Content Include="Views\UpdatePoint\TypeTopic.cshtml" />
     <Content Include="Views\TopicOfStudent\ViewInputTopicStu.cshtml" />
     <Content Include="Views\TopicOfStudent\listTopicStu.cshtml" />
-    <Content Include="UpLoadFile\Upload file công bố kết quả.xlsx" />
     <Content Include="UpLoadFile\File Mau Nhap Cong trinh sinh vien.xlsx" />
   </ItemGroup>
   <ItemGroup>

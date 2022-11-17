@@ -10,7 +10,6 @@
 @model DuAnQLNCKH.Models.TopicOfLecture
 @using DuAnQLNCKH.Models
 @*<script src="~/assets/client/js/bootstrap.min.js"></script>*@
-<link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
 <div class="page-header" style="margin-top:20px">
     <img src="~/images/statistic.png" width="50px" height="50px" />
     <strong style="color:blue; font-size:26px; font-weight:bold">Danh sách công trình cá nhân </strong>
@@ -77,7 +76,7 @@ else
                 <td>
                     <button data-idTp="@item.topicOfLecture.IdTp" class="btn btn-primary btnShowDeletePending" id="@btnShowDelete" type="button"><i class="fa fa-trash"></i>Xóa</button>
                     <div id="@btnDelete" class="modal fade" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document" style="max-width:800px">
+                        <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Xác nhận xóa</h4>
@@ -336,51 +335,7 @@ else
     <div>
         --------------------------------------------------------------------------
     </div>
-} 
-<div class="modal fade" id="view-more-pcr-planview-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Add Platform To MIR</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    ×
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="col-12 content-box">
-                    <div class="row content-detail">
-                        <div class="col-12 p-0">
-                            <div class="row row-action">
-                                <div class=" col-6 p-0">
-                                    <div class="col-12 search-info">
-                                        <label>Total: <b><span id="view-more-pcr-planview-grid-total-record">0</span> Record(s)</b></label>
-                                    </div>
-                                    <div class="col-12 search-info">
-                                        <label id="view-more-pcr-planview-grid-page-info">Filter Applied: 0 of 0 items</label>
-                                    </div>
-                                </div>
-                                <div class="col-6 actions">
-                                    <div class="btn-group dropdown float-right">
-                                        <button type="button" class="btn btn-default" id="view-more-pcr-planview-grid-clear-filter-grid" onclick='ClearFilterGrid("view-more-pcr-planview-grid")' disabled>
-                                            <i class="fa fa-eraser"></i>
-                                            Clear Filters
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="view-more-pcr-planview-grid"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default margin-left-5" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close" aria-hidden="true"></i>&nbsp;&nbsp;Close</button>
-                <button type="button" class="btn btn-primary margin-left-5" id="add-platform-to-mir-pcr" aria-hidden="true"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add to MIR</button>
-            </div>
-        </div>
-    </div>
-</div>
-
+}  
 <script> 
     $('.btnShowDeletePending').on('click', function () {
         var IdTp = $(this).attr('data-idTp');

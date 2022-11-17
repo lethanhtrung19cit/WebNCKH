@@ -31,7 +31,7 @@ else
             <div class="form-group">
                 <div style="color:black; font-weight:bold; font-family:'Times New Roman'; font-size:20px">Tên công trình</div>
                 <div>
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên công trình" } })
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên công trình", @required = "Required" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 
                 </div>
@@ -39,7 +39,7 @@ else
               <div class="form-group">
                   <div style="color:black; font-weight:bold; font-family:'Times New Roman'; font-size:20px">Đơn vị chủ trì</div>
                     <div>
-                        @Html.DropDownListFor(model=>model.IdFa, ViewBag.listFaculty as SelectList, "--Lựa chọn đơn vị chủ trì--", new { @class = "form-control" })
+                        @Html.DropDownListFor(model=>model.IdFa, ViewBag.listFaculty as SelectList, "--Lựa chọn đơn vị chủ trì--", new { @class = "form-control", @required = "Required" })
 
                     </div>
                 </div>
@@ -48,14 +48,14 @@ else
                 @if (ViewBag.listtype != null)
                 {
 
-                    @Html.DropDownList("IdType", ViewBag.listtype as SelectList, "--Lựa chọn phân loại--", new { @class = "form-control", onchange="changeName()" })
+                    @Html.DropDownList("IdType", ViewBag.listtype as SelectList, "--Lựa chọn phân loại--", new { @class = "form-control", @required = "Required", onchange ="changeName()" })
 
                 }
             </div>
             <div class="form-group">
                 <div id="LevelTopic" style="color:black; font-weight:bold; font-family:'Times New Roman'; font-size:20px">Chi tiết</div>
                  
-                    @Html.DropDownList("IdDetail", new SelectList(""), "--Lựa chọn--", new { @class = "form-control" })
+                    @Html.DropDownList("IdDetail", new SelectList(""), "--Lựa chọn--", new { @class = "form-control", @required = "Required" })
  
             </div>
             <input type="hidden" id="Level" value="0"/>
@@ -75,7 +75,7 @@ else
                         </div>
                         <div>
 
-                            @Html.EditorFor(model => model.DateSt, new { htmlAttributes = new { @Value = "2021-06-23", @class = "form-control", @type = "date", } })
+                            @Html.EditorFor(model => model.DateSt, new { htmlAttributes = new { @Value = "2021-06-23", @class = "form-control", @type = "date", @required = "Required" } })
                             @Html.ValidationMessageFor(model => model.DateSt, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -133,8 +133,8 @@ else
                         if ($('#Role').val() == 1) {
 
                             $('#author').append("<div id='divAdmin'>Chủ nhiệm đề tài: <input type='text' class='form-control' style='display:inline-block;width: 300px' name='NameAdmin'/></div> ")
-                            $('#divAdmin').append("Email: <input type='email' class='form-control' style='display:inline-block;width: 300px' name='EmailAdmin'/>");
-                            $('#divAdmin').append("<div id='divHoursAdmin' style='display: inline - block; display: none; width: 100px'> Giờ: <input  style='display:inline-block;width:300px' class='form-control' type='number' id='HourAdmin' name='HourAdmin'/></div>");
+                            $('#divAdmin').append("Email: <input required type='email' class='form-control' style='display:inline-block;width: 300px' name='EmailAdmin'/>");
+                            $('#divAdmin').append("<div id='divHoursAdmin' style='display: inline - block; display: none; width: 100px'> Giờ: <input required style='display:inline-block;width:300px' class='form-control' type='number' id='HourAdmin' name='HourAdmin'/></div>");
                             $('#CountAuthor').val(2);
                             $('#sttMember').val(2);
                             $('#NumberAuthor').text(Number.parseInt($('#NumberAuthor').text()) + 1);
@@ -353,7 +353,7 @@ else
             $('#NumberAuthor').text(Number.parseInt($('#NumberAuthor').text()) + 1);
             $('#CountAuthor').val($('#NumberAuthor').text());
             $('#add').append("<div id=AuThor" + stt +"> Họ tên : <input name=nameAu class='form-control' style='display:inline-block;width:300px' type='textbox'/>")
-            $('#AuThor'+stt).append("Email : <input name=email class='form-control' style='display:inline-block; width:300px; margin-top:20px;' type='email'/></div>")
+            $('#AuThor' + stt).append("Email : <input name=email class='form-control' style='display:inline-block; width:300px; margin-top:20px;' type='email'/></div>")
             stt++;
             $('#sttMember').val(stt);
            

@@ -73,12 +73,14 @@ table tr td {
     color: black;
     background: white;
 }
+
 .table2 {
     text-align: center;
     font-size: 13px;
     color: black;
     background: white;
 }
+
 .headerrow {
     background: #d2d2d2;
     color: black;
@@ -1120,7 +1122,7 @@ pre {
     .col-md-2 {
         flex: 0 0 16.66667%;
         max-width: 22%;
-        color:black;
+        color: black;
     }
 
     .col-md-3 {
@@ -11378,7 +11380,7 @@ a:focus {
             text-align: left;
             padding: 1rem;
             width: 15.5rem;
-            color:white;
+            color: white;
         }
 
             .sidebar .nav-item .nav-link i {
